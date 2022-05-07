@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+
+const Color primaryBackground = Color(0xff311C97);
+const Color heroBackground = Color(0xff321450);
+const Color blackColor = Color(0xff000000);
+const Color primaryText = Color(0xffB8B5D5);
+
+const Color primaryTextColor = Color(0xffffffff);
+const Color kcPrimaryColor = Color(0xffffffff);
+const Color kcMediumGreyColor = Color(0xff868686);
+const Color kcLightGreyColor = Color(0xffe5e5e5);
+const Color kcVeryLightGreyColor = Color(0xfff2f2f2);
+
+//dollar sign landing
+const Color dollarSignBox = Color(0xff3A2F85);
+
+//buttons
+const Color filledButtonBackground = Color(0xff7450FE);
+const Color outlineButtonBorder = Color(0xff7450FE);
+const Color buttonText = Color(0xffB8B5D5);
