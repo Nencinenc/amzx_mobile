@@ -99,7 +99,7 @@ class LoginPage extends StatelessWidget {
                           children: [
                             GestureDetector(
                               child: const CustomText(
-                                text: 'Not registered? ',
+                                text: 'Not registered? asd ',
                                 textAlign: TextAlign.center,
                               ),
                               onTap: () async {
