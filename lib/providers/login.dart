@@ -13,10 +13,19 @@ class LoginProvider extends ChangeNotifier {
   });
 
   Future login(String email, String password) async {
-      final data = await apiService.login(
-        email,
-        password,
-      );
-      await storageService.addToken(data.token);
+    final data = await apiService.login(
+      email,
+      password,
+    );
+    await storageService.addToken(data.token);
+  }
+
+  Future<bool> isLogged() async {
+    final token = await storageService.getToken();
+    return token != null;
+  }
+
+  Future signOut() async {
+    await storageService.deleteAll();
   }
 }

@@ -1,8 +1,8 @@
-import 'package:amzx/common_widgets/box_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/app_colors.dart';
+import '../typography/custom_text.dart';
 
 class OutlineButton extends StatelessWidget {
   final void Function() onTap;
@@ -25,7 +25,7 @@ class OutlineButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed :onTap,
+      onPressed: onTap,
       color: heroBackground,
       height: 45,
       minWidth: double.infinity,
@@ -35,7 +35,9 @@ class OutlineButton extends StatelessWidget {
         ),
         side: BorderSide(color: outlineButtonBorder),
       ),
-      child: OutlineButtonText(text: text,),
+      child: CustomText(
+        text: text,
+      ),
     );
   }
 }

@@ -1,6 +1,6 @@
+import 'package:amzx/common_widgets/typography/custom_text.dart';
 import 'package:flutter/material.dart';
 
-import 'box_text.dart';
 import 'input_field.dart';
 
 class CustomForField extends StatelessWidget {
@@ -24,7 +24,7 @@ class CustomForField extends StatelessWidget {
           padding: const EdgeInsets.only(
             bottom: 4.0,
           ),
-          child: CaptionText(
+          child: CustomText(
             text: title,
           ),
         ),

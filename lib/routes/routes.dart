@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../pages/home_page.dart';
 import '../pages/introduction_screens.dart';
+import '../pages/landing_page.dart';
 import '../pages/login_page.dart';
 import '../pages/splash_page.dart';
-import '../pages/landing_page.dart';
 
 class RouteManager {
   static const String splashPage = '/home';

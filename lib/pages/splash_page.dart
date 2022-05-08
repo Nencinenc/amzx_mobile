@@ -1,9 +1,9 @@
-import 'dart:async';
-
 import 'package:amzx/common_widgets/custom_scaffold.dart';
+import 'package:amzx/providers/login.dart';
 import 'package:amzx/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../common_widgets/company_logo.dart';
 
@@ -16,12 +16,16 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   void _loadInitialData() async {
-    //Here we will load the initial data and do the checks for the token
-    Timer(
-      const Duration(seconds: 3),
-      () => Navigator.pushNamedAndRemoveUntil(
-          context, RouteManager.landingPage, (_) => false),
-    );
+    final isLogged = await context.read<LoginProvider>().isLogged();
+
+    if (isLogged) {
+      Navigator.pushNamedAndRemoveUntil(
+          context, RouteManager.homePage, (_) => false);
+    }
+    if (!isLogged) {
+      Navigator.pushNamedAndRemoveUntil(
+          context, RouteManager.loginPage, (_) => false);
+    }
   }
 
   @override
