@@ -20,9 +20,7 @@ class API {
       'email': email,
       'password': password,
     };
-    print(body);
     final data = await postRequest(url, body);
-    print(data);
     return LoginResponse.fromJson(data);
   }
 }

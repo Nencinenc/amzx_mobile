@@ -1,8 +1,8 @@
+import 'package:amzx/common_widgets/typography/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../shared/app_colors.dart';
-import 'box_text.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
@@ -30,11 +30,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AnimatedContainer(
       duration: const Duration(microseconds: 1000),
       child: AppBar(
-        elevation: 0,
+        elevation: 5.0,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),
         actions: actions,
-        title: HeadingTwoText(text: title ?? '', color: Colors.white),
+        title: CustomText(
+          text: title ?? '',
+          textColor: Colors.white,
+        ),
         leading: leading,
         leadingWidth: leadingWidth,
         backgroundColor: backgroundColor,

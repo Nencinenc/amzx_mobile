@@ -1,18 +1,14 @@
-import 'package:amzx/common_widgets/box_text.dart';
 import 'package:amzx/common_widgets/company_logo_text.dart';
 import 'package:amzx/common_widgets/custom_scaffold.dart';
-import 'package:amzx/common_widgets/dollar_sign_box.dart';
 import 'package:amzx/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:introduction_screen/introduction_screen.dart';
 
 import '../common_widgets/buttons/filled_button.dart';
 import '../common_widgets/buttons/outline_button.dart';
+import '../common_widgets/typography/custom_text.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +19,9 @@ class LandingPage extends StatelessWidget {
 
     void handleSignInTap() {
       Navigator.pushNamed(
-        context, RouteManager.loginPage,);
+        context,
+        RouteManager.loginPage,
+      );
     }
 
     return CustomScaffold(
@@ -37,21 +35,21 @@ class LandingPage extends StatelessWidget {
           child: Column(
             children: [
               const CompanyLogoWithText(),
-              const Padding(
-                padding: EdgeInsets.only(top: 80.0),
-                child: DollarSignBox(
-                  text: 'Discover new ways to conquer Amazon!',
-                ),
-              ),
+              // const Padding(
+              //   padding: EdgeInsets.only(top: 80.0),
+              //   child: DollarSignBox(
+              //     text: 'Discover new ways to conquer Amazon!',
+              //   ),
+              // ),
               const Padding(
                 padding: EdgeInsets.only(top: 15.0),
-                child: HeadingOneText(
+                child: CustomText(
                   text: 'Sell on Amazon Smarter And Easier Than Ever Before',
                 ),
               ),
               const Padding(
                 padding: EdgeInsets.only(top: 28.0),
-                child: SubHeadingText(
+                child: CustomText(
                   text:
                       'Fully automated profitable ads for Amazon PPC & Amazon Merch',
                 ),

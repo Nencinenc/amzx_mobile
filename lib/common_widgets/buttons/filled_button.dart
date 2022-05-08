@@ -1,7 +1,8 @@
-import 'package:amzx/common_widgets/box_text.dart';
 import 'package:amzx/shared/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../typography/custom_text.dart';
 
 class FilledButton extends StatelessWidget {
   final void Function() onTap;
@@ -24,7 +25,7 @@ class FilledButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed :onTap,
+      onPressed: onTap,
       color: filledButtonBackground,
       height: 45,
       minWidth: double.infinity,
@@ -34,7 +35,9 @@ class FilledButton extends StatelessWidget {
         ),
         side: BorderSide(color: outlineButtonBorder),
       ),
-      child: OutlineButtonText(text: text,),
+      child: CustomText(
+        text: text,
+      ),
     );
   }
 }

@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
             onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
             child: const MaterialApp(
               debugShowCheckedModeBanner: false,
-              initialRoute: RouteManager.homePage,
+              initialRoute: RouteManager.splashPage,
               onGenerateRoute: RouteManager.generateRoute,
             ),
           );
