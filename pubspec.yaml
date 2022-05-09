@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  country_icons: ^2.0.2
   syncfusion_flutter_charts: ^20.1.52
   flutter_secure_storage: ^5.0.2
   url_launcher: ^6.1.0

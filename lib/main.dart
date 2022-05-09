@@ -1,4 +1,4 @@
-import 'package:amzx/providers/login.dart';
+import 'package:amzx/providers/account.dart';
 import 'package:amzx/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(
-            create: (context) => getIt<LoginProvider>(),
+            create: (context) => getIt<AccountProvider>(),
           ),
         ],
         builder: (context, child) {

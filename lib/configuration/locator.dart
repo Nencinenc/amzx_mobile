@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:amzx/configuration/services/api.dart';
 import 'package:amzx/configuration/services/error_messages.dart';
-import 'package:amzx/providers/login.dart';
+import 'package:amzx/providers/account.dart';
 import 'package:amzx/repositories/secure_storage_repo.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
@@ -47,7 +47,7 @@ Future _registerRepositories() async {
 
 Future _registerProviders() async {
   getIt.registerLazySingleton(
-    () => LoginProvider(
+    () => AccountProvider(
       apiService: getIt(),
       storageService: getIt(),
     ),
