@@ -2,7 +2,7 @@ import 'package:amzx/pages/navbar_screens/more_menu/more_menu.dart';
 import 'package:flutter/material.dart';
 
 import '../configuration/services/api.dart';
-import '../pages/home_page.dart';
+import '../pages/navbar_screens/campaigns/campaigns_page.dart';
 import '../pages/navbar_screens/home/home.dart';
 import '../pages/navbar_screens/products/products.dart';
 import '../repositories/secure_storage_repo.dart';
@@ -41,19 +41,17 @@ class AccountProvider extends ChangeNotifier {
   }
 
   Widget getSelectedScreen() {
-    if(_selectedIndex == 0) {
+    if (_selectedIndex == 0) {
       return const HomeScreen();
     }
-    if(_selectedIndex == 1) {
+    if (_selectedIndex == 1) {
       return const ProductsPage();
     }
-    if(_selectedIndex == 2) {
-      return const Text(
-        'Index 2: Campaigns',
-      );
+    if (_selectedIndex == 2) {
+      return CampaignsPage();
     }
-    if(_selectedIndex == 3) {
-      return const MoreMenuPage();
+    if (_selectedIndex == 3) {
+      return MoreMenuPage();
     }
     return const HomeScreen();
   }
