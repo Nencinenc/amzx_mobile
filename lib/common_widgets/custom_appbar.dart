@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../configuration/constants.dart';
 import '../shared/app_colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -28,16 +29,18 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       duration: const Duration(microseconds: 1000),
       child: AppBar(
         elevation: 5.0,
-        title: Padding(
-          padding: const EdgeInsets.only(top:10.0),
-          child: Image.asset('assets/images/logo2.png', fit: BoxFit.cover, height: 40),
+        title: Image.asset(
+          logoWithTextPath,
+          fit: BoxFit.cover,
+          height: 40,
         ),
-        centerTitle: true,
+        automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(color: Colors.black),
         actions: actions,
         leading: leading,
         leadingWidth: leadingWidth,
         backgroundColor: backgroundColor,
+        centerTitle: true,
       ),
     );
   }

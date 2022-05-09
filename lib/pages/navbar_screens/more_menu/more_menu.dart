@@ -1,33 +1,99 @@
-import 'package:amzx/shared/app_colors.dart';
+import 'package:amzx/common_widgets/typography/custom_text.dart';
+import 'package:amzx/pages/navbar_screens/more_menu/menu_list_item.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../configuration/interceptors/enums.dart';
+import '../../../shared/app_colors.dart';
 
-class MoreMenuPage extends StatefulWidget {
+part 'menu_item_model.dart';
 
+class MoreMenuPage extends StatelessWidget {
+  MoreMenuPage({Key? key}) : super(key: key);
 
-  const MoreMenuPage({Key? key}) : super(key: key);
-
-  @override
-  State<MoreMenuPage> createState() => _MoreMenuPageState();
-}
-
-class _MoreMenuPageState extends State<MoreMenuPage> {
-  final _scrollController = ScrollController();
-
-  Color appBarColor = shadedHeroColor;
+  final items = [
+    MenuItemModel(
+        icon: FontAwesomeIcons.addressBook, text: 'Kur', onTap: () {}),
+    MenuItemModel(
+        icon: FontAwesomeIcons.addressBook, text: 'Kur', onTap: () {}),
+    MenuItemModel(
+        icon: FontAwesomeIcons.addressBook, text: 'Kur', onTap: () {}),
+    MenuItemModel(
+        icon: FontAwesomeIcons.addressBook, text: 'Kur', onTap: () {}),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: _scrollController,
-      // scrollDirection: Axis.horizontal,
-      child: Center(
-        child: Column(
-          children: const [
-            Text('test'),
-          ],
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints viewportConstraints) {
+      return SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: viewportConstraints.maxHeight,
+          ),
+          child: IntrinsicHeight(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 30.0,
+                horizontal: 60.0,
+              ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Container(
+                      width: 80,
+                      height: 80,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: primaryBackground,
+                      ),
+                      child: const Align(
+                        alignment: Alignment.center,
+                        child: FaIcon(
+                          FontAwesomeIcons.user,
+                          size: 50,
+                          color: primaryText,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 18.0),
+                    child: CustomText(
+                      text: 'Adko Djudjeta',
+                      textSize: TextSize.xxl,
+                      textWeight: WeightSize.bold,
+                    ),
+                  ),
+                  Column(
+                    children: items
+                        .map(
+                          (e) => MenuListItem(
+                            text: e.text,
+                            icon: e.icon,
+                            onTap: e.onTap,
+                          ),
+                        )
+                        .toList(),
+                  ),
+                  const Spacer(),
+                  MenuListItem(
+                    text: 'Settings',
+                    icon: FontAwesomeIcons.gear,
+                    onTap: () {},
+                  ),
+                  MenuListItem(
+                    text: 'Log out',
+                    icon: FontAwesomeIcons.arrowRightFromBracket,
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }
