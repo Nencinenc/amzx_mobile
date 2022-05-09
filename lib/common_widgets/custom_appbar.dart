@@ -1,11 +1,9 @@
-import 'package:amzx/common_widgets/typography/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../shared/app_colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String? title;
   final List<Widget>? actions;
   final Widget? leading;
   final Widget? titleWidget;
@@ -14,7 +12,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   const CustomAppBar({
     Key? key,
-    this.title,
     this.actions,
     this.leading,
     this.titleWidget,
@@ -31,13 +28,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       duration: const Duration(microseconds: 1000),
       child: AppBar(
         elevation: 5.0,
+        title: Padding(
+          padding: const EdgeInsets.only(top:10.0),
+          child: Image.asset('assets/images/logo2.png', fit: BoxFit.cover, height: 40),
+        ),
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black),
         actions: actions,
-        title: CustomText(
-          text: title ?? '',
-          textColor: Colors.white,
-        ),
         leading: leading,
         leadingWidth: leadingWidth,
         backgroundColor: backgroundColor,

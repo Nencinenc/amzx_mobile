@@ -1,5 +1,5 @@
 import 'package:amzx/common_widgets/custom_scaffold.dart';
-import 'package:amzx/providers/login.dart';
+import 'package:amzx/providers/account.dart';
 import 'package:amzx/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   void _loadInitialData() async {
-    final isLogged = await context.read<LoginProvider>().isLogged();
+    final isLogged = await context.read<AccountProvider>().isLogged();
 
     if (isLogged) {
       Navigator.pushNamedAndRemoveUntil(

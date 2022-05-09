@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const Color primaryBackground = Color(0xff311C97);
 const Color heroBackground = Color(0xff321450);
-const Color shadedHeroColor = Color(0xff1e0c30);
+const Color shadedHeroColor = Color(0xff311C97);
 const Color blackColor = Color(0xff000000);
 const Color primaryText = Color(0xffB8B5D5);
 

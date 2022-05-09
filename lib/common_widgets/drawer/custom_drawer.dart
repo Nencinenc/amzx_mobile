@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../configuration/interceptors/enums.dart';
-import '../../providers/login.dart';
+import '../../providers/account.dart';
 import '../../routes/routes.dart';
 import '../../shared/app_colors.dart';
 import '../company_logo.dart';
@@ -18,7 +18,7 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void handleLogout() async {
-      await context.read<LoginProvider>().signOut();
+      await context.read<AccountProvider>().signOut();
       Navigator.pushNamedAndRemoveUntil(
           context, RouteManager.loginPage, (route) => false);
     }
@@ -39,7 +39,7 @@ class CustomDrawer extends StatelessWidget {
         children: [
           const DrawerHeader(
             decoration: BoxDecoration(
-              color: heroBackground,
+              color: primaryBackground,
             ),
             child: CompanyLogo(),
           ),

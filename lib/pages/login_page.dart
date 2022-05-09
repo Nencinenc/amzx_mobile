@@ -8,7 +8,8 @@ import 'package:url_launcher/url_launcher.dart';
 import '../common_widgets/buttons/gradient_button.dart';
 import '../common_widgets/custom_form_field.dart';
 import '../configuration/constants.dart';
-import '../providers/login.dart';
+import '../configuration/interceptors/enums.dart';
+import '../providers/account.dart';
 import '../routes/routes.dart';
 
 class LoginPage extends StatelessWidget {
@@ -20,11 +21,11 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void handleLogin() async {
-      await context.read<LoginProvider>().login(
+      await context.read<AccountProvider>().login(
             _emailController.text,
             _passwordController.text,
           );
-      final isLogged = await context.read<LoginProvider>().isLogged();
+      final isLogged = await context.read<AccountProvider>().isLogged();
       if (isLogged) {
         Navigator.pushNamedAndRemoveUntil(
           context,
@@ -60,10 +61,12 @@ class LoginPage extends StatelessWidget {
                   child: Column(
                     children: [
                       const Padding(
-                        padding: EdgeInsets.only(bottom: 18.0),
+                        padding: EdgeInsets.only(bottom: 14.0),
                         child: CustomText(
                           text: 'Login',
                           textColor: Colors.white,
+                          textSize: TextSize.xxl,
+                          textWeight: WeightSize.bold,
                         ),
                       ),
                       const Padding(
@@ -99,8 +102,7 @@ class LoginPage extends StatelessWidget {
                           children: [
                             GestureDetector(
                               child: const CustomText(
-                                text: 'Not registered? asd ',
-                                textAlign: TextAlign.center,
+                                text: 'Not registered? ',
                               ),
                               onTap: () async {
                                 await launchUrl(forgotPasswordUrl);
