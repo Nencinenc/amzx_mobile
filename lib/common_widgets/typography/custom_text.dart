@@ -21,7 +21,7 @@ class CustomText extends StatelessWidget {
     required this.text,
     this.textSize = TextSize.s,
     this.textWeight = WeightSize.regular,
-    this.textColor = primaryText,
+    this.textColor = blackColor,
     this.textAlign,
     this.underline = false,
     this.height,
@@ -46,3 +46,4 @@ class CustomText extends StatelessWidget {
     );
   }
 }
+
