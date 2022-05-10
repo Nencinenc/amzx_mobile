@@ -5,6 +5,7 @@ const Color heroBackground = Color(0xff321450);
 const Color shadedHeroColor = Color(0xff311C97);
 const Color blackColor = Color(0xff000000);
 const Color primaryText = Color(0xffB8B5D5);
+const Color defaultLinkColor = Color(0xff551A8B);
 
 const Color primaryTextColor = Color(0xffffffff);
 const Color kcPrimaryColor = Color(0xffffffff);

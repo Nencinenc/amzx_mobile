@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../configuration/interceptors/enums.dart';
 import '../../shared/app_colors.dart';
 import '../typography/custom_text.dart';
 
@@ -37,6 +38,8 @@ class OutlineButton extends StatelessWidget {
       ),
       child: CustomText(
         text: text,
+        textColor: Colors.white,
+        textWeight: WeightSize.heavy,
       ),
     );
   }

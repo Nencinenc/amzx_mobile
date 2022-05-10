@@ -2,8 +2,10 @@ import 'package:amzx/common_widgets/typography/custom_text.dart';
 import 'package:amzx/pages/navbar_screens/more_menu/menu_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 import '../../../configuration/interceptors/enums.dart';
+import '../../../providers/account.dart';
 import '../../../shared/app_colors.dart';
 
 part 'menu_item_model.dart';
@@ -64,6 +66,7 @@ class MoreMenuPage extends StatelessWidget {
                       text: 'Adko Djudjeta',
                       textSize: TextSize.xxl,
                       textWeight: WeightSize.bold,
+                      textColor: Colors.white,
                     ),
                   ),
                   Column(
@@ -86,7 +89,7 @@ class MoreMenuPage extends StatelessWidget {
                   MenuListItem(
                     text: 'Log out',
                     icon: FontAwesomeIcons.arrowRightFromBracket,
-                    onTap: () {},
+                    onTap: () { context.read<AccountProvider>().signOut(); },
                   ),
                 ],
               ),

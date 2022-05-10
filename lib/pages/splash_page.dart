@@ -24,7 +24,7 @@ class _SplashPageState extends State<SplashPage> {
     }
     if (!isLogged) {
       Navigator.pushNamedAndRemoveUntil(
-          context, RouteManager.loginPage, (_) => false);
+          context, RouteManager.landingPage, (_) => false);
     }
   }
 

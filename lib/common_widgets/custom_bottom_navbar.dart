@@ -22,19 +22,31 @@ class CustomBottomNavBar extends StatelessWidget {
       backgroundColor: primaryBackground,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.house),
+            icon: Padding(
+              padding: EdgeInsets.only(bottom: 2.0),
+              child: FaIcon(FontAwesomeIcons.house),
+            ),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.bookOpen),
+            icon: Padding(
+              padding: EdgeInsets.only(bottom: 2.0),
+              child: FaIcon(FontAwesomeIcons.bookOpen),
+            ),
             label: 'Products',
           ),
           BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.tableList),
+            icon: Padding(
+              padding: EdgeInsets.only(bottom: 2.0),
+              child: FaIcon(FontAwesomeIcons.tableList),
+            ),
             label: 'Campaigns',
           ),
           BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.ellipsisVertical),
+            icon: Padding(
+              padding: EdgeInsets.only(bottom: 2.0),
+              child: FaIcon(FontAwesomeIcons.ellipsisVertical),
+            ),
             label: 'More',
           ),
         ],

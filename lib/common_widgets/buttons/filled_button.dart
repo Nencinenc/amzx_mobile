@@ -2,6 +2,7 @@ import 'package:amzx/shared/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../configuration/interceptors/enums.dart';
 import '../typography/custom_text.dart';
 
 class FilledButton extends StatelessWidget {
@@ -37,6 +38,8 @@ class FilledButton extends StatelessWidget {
       ),
       child: CustomText(
         text: text,
+        textColor: Colors.white,
+        textWeight: WeightSize.heavy,
       ),
     );
   }

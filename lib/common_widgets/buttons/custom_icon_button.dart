@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../configuration/interceptors/enums.dart';
+import '../../shared/app_colors.dart';
 import '../typography/custom_text.dart';
 
 class CustomIconButton extends StatelessWidget {
@@ -20,7 +21,7 @@ class CustomIconButton extends StatelessWidget {
       child: Column(
         children: [
           FaIcon(icon, size: size, color: color),
-          CustomText(text: text),
+          CustomText(text: text, textColor: defaultLinkColor,),
         ]
       )
     );

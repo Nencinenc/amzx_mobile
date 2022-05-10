@@ -1,5 +1,6 @@
 import 'package:amzx/configuration/interceptors/enums.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../common_widgets/typography/custom_text.dart';
@@ -36,6 +37,7 @@ class MenuListItem extends StatelessWidget {
             CustomText(
               text: text,
               textSize: TextSize.l,
+              textColor: Colors.white,
             ),
           ],
         ),

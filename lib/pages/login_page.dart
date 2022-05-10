@@ -11,6 +11,7 @@ import '../configuration/constants.dart';
 import '../configuration/interceptors/enums.dart';
 import '../providers/account.dart';
 import '../routes/routes.dart';
+import '../shared/app_colors.dart';
 
 class LoginPage extends StatelessWidget {
   final _emailController = TextEditingController();
@@ -63,16 +64,17 @@ class LoginPage extends StatelessWidget {
                       const Padding(
                         padding: EdgeInsets.only(bottom: 14.0),
                         child: CustomText(
-                          text: 'Login',
+                          text: 'Existing User',
                           textColor: Colors.white,
-                          textSize: TextSize.xxl,
-                          textWeight: WeightSize.bold,
+                          textSize: TextSize.xxxl,
+                          textWeight: WeightSize.ultraBold,
                         ),
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(vertical: 28.0),
                         child: CustomText(
                           text: 'Please log in to continue',
+                          textColor: primaryTextColor,
                         ),
                       ),
                       Padding(
@@ -80,6 +82,7 @@ class LoginPage extends StatelessWidget {
                         child: CustomForField(
                           title: 'Email',
                           controller: _emailController,
+
                         ),
                       ),
                       Padding(
@@ -103,6 +106,7 @@ class LoginPage extends StatelessWidget {
                             GestureDetector(
                               child: const CustomText(
                                 text: 'Not registered? ',
+                                textColor: primaryTextColor,
                               ),
                               onTap: () async {
                                 await launchUrl(forgotPasswordUrl);
@@ -110,7 +114,8 @@ class LoginPage extends StatelessWidget {
                             ),
                             GestureDetector(
                               child: const CustomText(
-                                text: 'Forgot Password?',
+                                text: 'Reset password',
+                                textColor: primaryTextColor,
                               ),
                             ),
                           ],

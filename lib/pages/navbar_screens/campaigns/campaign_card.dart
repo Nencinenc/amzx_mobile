@@ -1,6 +1,7 @@
 import 'package:amzx/common_widgets/typography/custom_text.dart';
 import 'package:amzx/models/network/campaign.dart';
 import 'package:amzx/pages/navbar_screens/campaigns/campaigns_page.dart';
+import 'package:amzx/shared/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -110,14 +111,14 @@ class CampaignCard extends StatelessWidget {
             children: [
               Column(
                 children: const [
-                  CustomIconButton(text: "Update", icon: FontAwesomeIcons.pencil, color: Colors.black, size: 15,),
+                  CustomIconButton(text: "Update", icon: FontAwesomeIcons.pencil, color: defaultLinkColor, size: 15,),
                 ],
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Column(
                   children: const [
-                    CustomIconButton(text: "Automation", icon: FontAwesomeIcons.gears, color: Colors.black, size: 15,),
+                    CustomIconButton(text: "Automation", icon: FontAwesomeIcons.gears, color: defaultLinkColor, size: 15,),
                   ],
                 ),
               ),
