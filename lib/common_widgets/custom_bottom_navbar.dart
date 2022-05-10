@@ -34,7 +34,7 @@ class CustomBottomNavBar extends StatelessWidget {
             label: 'Campaigns',
           ),
           BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.ellipsis),
+            icon: FaIcon(FontAwesomeIcons.ellipsisVertical),
             label: 'More',
           ),
         ],
