@@ -1,5 +1,6 @@
 import 'package:amzx/common_widgets/typography/custom_text.dart';
 import 'package:amzx/pages/navbar_screens/more_menu/menu_list_item.dart';
+import 'package:amzx/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +24,15 @@ class MoreMenuPage extends StatelessWidget {
     MenuItemModel(
         icon: FontAwesomeIcons.addressBook, text: 'Kur', onTap: () {}),
   ];
+
+  void handleLogout(BuildContext context) async {
+    await context.read<AccountProvider>().signOut();
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      RouteManager.loginPage,
+      (route) => false,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +99,7 @@ class MoreMenuPage extends StatelessWidget {
                   MenuListItem(
                     text: 'Log out',
                     icon: FontAwesomeIcons.arrowRightFromBracket,
-                    onTap: () { context.read<AccountProvider>().signOut(); },
+                    onTap: () => handleLogout(context),
                   ),
                 ],
               ),

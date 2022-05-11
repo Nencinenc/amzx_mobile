@@ -1,7 +1,6 @@
 import 'package:amzx/common_widgets/typography/custom_text.dart';
 import 'package:amzx/models/network/campaign.dart';
 import 'package:amzx/pages/navbar_screens/campaigns/campaigns_page.dart';
-import 'package:amzx/shared/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -52,8 +51,7 @@ class CampaignCard extends StatelessWidget {
                         children: const [
                           _CampaignKey(text: "Start Date: "),
                           CustomText(
-                            // text: campaign.endDate.toString(), //will change
-                            text: "10.5.2022",
+                            text: "10.5.2022", //Will change
                           ),
                         ],
                       ),
@@ -64,8 +62,7 @@ class CampaignCard extends StatelessWidget {
                         children: const [
                           _CampaignKey(text: "End Date: "),
                           CustomText(
-                            // text: campaign.endDate.toString(), //will change
-                            text: "No end date",
+                            text: "No end date", //Will change
                           ),
                         ],
                       ),
@@ -76,7 +73,7 @@ class CampaignCard extends StatelessWidget {
                         children: const [
                           _CampaignKey(text: "ACoS: "),
                           CustomText(
-                            text: "18,33 %",
+                            text: "18,33 %", //Will change
                           ),
                         ],
                       ),
@@ -85,14 +82,14 @@ class CampaignCard extends StatelessWidget {
                       children: const [
                         _CampaignKey(text: "Spend: "),
                         CustomText(
-                          text: "1,405 EUR",
+                          text: "1,405 EUR", //Will change
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 9.0),
                           child: _CampaignKey(text: "Sales: "),
                         ),
                         CustomText(
-                          text: "14,053 EUR",
+                          text: "14,053 EUR", //Will change
                         ),
                       ],
                     ),
@@ -106,35 +103,31 @@ class CampaignCard extends StatelessWidget {
             thickness: 1,
             color: Colors.grey,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Column(
-                children: const [
-                  CustomIconButton(text: "Update", icon: FontAwesomeIcons.pencil, color: defaultLinkColor, size: 15,),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Column(
-                  children: const [
-                    CustomIconButton(text: "Automation", icon: FontAwesomeIcons.gears, color: defaultLinkColor, size: 15,),
-                  ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const CustomIconButton(
+                  text: "Update",
+                  icon: FontAwesomeIcons.pencil,
+                  color: Colors.black,
+                  size: 15,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: StateTag(
+                const CustomIconButton(
+                  text: "Automation",
+                  icon: FontAwesomeIcons.gears,
+                  color: Colors.black,
+                  size: 15,
+                ),
+                StateTag(
                   state: campaign.state,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TargetTypeTag(
+                TargetTypeTag(
                   targetType: campaign.targetType,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),

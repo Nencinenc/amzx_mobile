@@ -10,20 +10,23 @@ class StateTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 20,
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(
-          Radius.circular(40.0),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        width: 100,
+        height: 20,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(
+            Radius.circular(40.0),
+          ),
+          color: Colors.green,
         ),
-        color: Colors.green,
-      ),
-      child: Align(
-        alignment: Alignment.center,
-        child: CustomText(
-          text: state,
-          textColor: Colors.white,
+        child: Align(
+          alignment: Alignment.center,
+          child: CustomText(
+            text: state,
+            textColor: Colors.white,
+          ),
         ),
       ),
     );
