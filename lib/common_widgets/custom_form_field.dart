@@ -8,11 +8,17 @@ class CustomForField extends StatelessWidget {
   final String title;
   final TextEditingController controller;
   final bool password;
+  final TextInputType? textInputType;
+  final TextInputAction? textInputAction;
+  final Widget? icon;
 
   const CustomForField({
     Key? key,
     required this.title,
     required this.controller,
+    this.textInputType,
+    this.textInputAction,
+    this.icon,
     this.password = false,
   }) : super(key: key);
 
@@ -33,6 +39,9 @@ class CustomForField extends StatelessWidget {
         BoxInputField(
           controller: controller,
           password: password,
+          textInputType: textInputType,
+          textInputAction: textInputAction,
+          icon: icon,
         ),
       ],
     );

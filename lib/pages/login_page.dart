@@ -1,5 +1,6 @@
 import 'package:amzx/common_widgets/custom_appbar.dart';
 import 'package:amzx/common_widgets/custom_scaffold.dart';
+import 'package:amzx/common_widgets/eye_icon.dart';
 import 'package:amzx/common_widgets/typography/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,29 +14,36 @@ import '../providers/account.dart';
 import '../routes/routes.dart';
 import '../shared/app_colors.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  bool showPassword = false;
+
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  LoginPage({Key? key}) : super(key: key);
+  void handleLogin(BuildContext context) async {
+    await context.read<AccountProvider>().login(
+          _emailController.text,
+          _passwordController.text,
+        );
+    final isLogged = await context.read<AccountProvider>().isLogged();
+    if (isLogged) {
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        RouteManager.homePage,
+        (route) => false,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    void handleLogin() async {
-      await context.read<AccountProvider>().login(
-            _emailController.text,
-            _passwordController.text,
-          );
-      final isLogged = await context.read<AccountProvider>().isLogged();
-      if (isLogged) {
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          RouteManager.homePage,
-          (route) => false,
-        );
-      }
-    }
-
     return CustomScaffold(
       appBar: const CustomAppBar(
         backgroundColor: Colors.transparent,
@@ -82,7 +90,8 @@ class LoginPage extends StatelessWidget {
                         child: CustomForField(
                           title: 'Email',
                           controller: _emailController,
-
+                          textInputType: TextInputType.emailAddress,
+                          textInputAction: TextInputAction.next,
                         ),
                       ),
                       Padding(
@@ -90,12 +99,20 @@ class LoginPage extends StatelessWidget {
                         child: CustomForField(
                           title: 'Password',
                           controller: _passwordController,
-                          password: true,
+                          password: showPassword,
+                          icon: EyeIcon(
+                            onPressed: () {
+                              setState(() {
+                                showPassword = !showPassword;
+                              });
+                            },
+                            hidePassword: !showPassword,
+                          ),
                         ),
                       ),
                       GradientButton(
                         text: "LET'S GO",
-                        onTap: () => handleLogin(),
+                        onTap: () => handleLogin(context),
                       ),
                       const Spacer(),
                       Padding(
