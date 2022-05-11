@@ -4,14 +4,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../typography/custom_text.dart';
 
 class CustomIconButton extends StatelessWidget {
-  const CustomIconButton(
-      {Key? key,
-      required this.text,
-      required this.icon,
-      required this.size,
-      required this.color,
-      this.onPress})
-      : super(key: key);
+  const CustomIconButton({
+    Key? key,
+    required this.text,
+    required this.icon,
+    required this.size,
+    required this.color,
+    this.onPress,
+  }) : super(key: key);
 
   final String text;
   final IconData icon;

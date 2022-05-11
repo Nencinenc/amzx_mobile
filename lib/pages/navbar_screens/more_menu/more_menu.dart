@@ -29,7 +29,7 @@ class MoreMenuPage extends StatelessWidget {
     await context.read<AccountProvider>().signOut();
     Navigator.pushNamedAndRemoveUntil(
       context,
-      RouteManager.loginPage,
+      RouteManager.landingPage,
       (route) => false,
     );
   }
@@ -76,6 +76,7 @@ class MoreMenuPage extends StatelessWidget {
                       text: 'Adko Djudjeta',
                       textSize: TextSize.xxl,
                       textWeight: WeightSize.bold,
+                      textColor: Colors.white,
                     ),
                   ),
                   Column(

@@ -8,6 +8,9 @@ class BoxInputField extends StatelessWidget {
   final Widget? leading;
   final Widget? trailing;
   final bool password;
+  final TextInputType? textInputType;
+  final TextInputAction? textInputAction;
+  final Widget? icon;
   final void Function()? trailingTapped;
 
   final circularBorder = OutlineInputBorder(
@@ -21,6 +24,9 @@ class BoxInputField extends StatelessWidget {
     this.leading,
     this.trailing,
     this.trailingTapped,
+    this.textInputType,
+    this.textInputAction,
+    this.icon,
     this.password = false,
   }) : super(key: key);
 
@@ -30,19 +36,22 @@ class BoxInputField extends StatelessWidget {
       controller: controller,
       style: const TextStyle(height: 1, color: buttonText),
       obscureText: password,
-      decoration: const InputDecoration(
-        border: UnderlineInputBorder(
+      keyboardType: textInputType,
+      textInputAction: textInputAction,
+      decoration: InputDecoration(
+        border: const UnderlineInputBorder(
           borderSide: BorderSide(color: kcLightGreyColor),
         ),
-        errorBorder: UnderlineInputBorder(
+        errorBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: kcLightGreyColor),
         ),
-        focusedBorder: UnderlineInputBorder(
+        focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: kcLightGreyColor),
         ),
-        enabledBorder: UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: kcLightGreyColor),
         ),
+        suffixIcon: icon,
       ),
     );
   }

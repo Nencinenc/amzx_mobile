@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../configuration/interceptors/enums.dart';
+import '../../shared/app_colors.dart';
 import '../typography/custom_text.dart';
 
 class GradientButton extends StatelessWidget {
@@ -35,7 +37,7 @@ class GradientButton extends StatelessWidget {
             vertical: 18.0,
           ),
           child: Center(
-            child: CustomText(text: text),
+            child: CustomText(text: text, textColor: primaryTextColor, textWeight: WeightSize.demiBold,),
           ),
         ),
       ),

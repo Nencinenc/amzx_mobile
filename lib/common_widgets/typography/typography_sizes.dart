@@ -17,6 +17,10 @@ class _TypographySizes {
         return 20.0;
       case TextSize.xxl:
         return 22.0;
+      case TextSize.xxxl:
+        return 26.0;
+      case TextSize.xxxxl:
+        return 30.0;
       default:
         throw const FormatException('Size not found!');
     }

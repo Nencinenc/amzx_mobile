@@ -5,7 +5,10 @@ import 'package:flutter/cupertino.dart';
 
 import '../common_widgets/buttons/filled_button.dart';
 import '../common_widgets/buttons/outline_button.dart';
+import '../common_widgets/dollar_sign_box.dart';
 import '../common_widgets/typography/custom_text.dart';
+import '../configuration/interceptors/enums.dart';
+import '../shared/app_colors.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -35,16 +38,19 @@ class LandingPage extends StatelessWidget {
           child: Column(
             children: [
               const CompanyLogoWithText(),
-              // const Padding(
-              //   padding: EdgeInsets.only(top: 80.0),
-              //   child: DollarSignBox(
-              //     text: 'Discover new ways to conquer Amazon!',
-              //   ),
-              // ),
+              const Padding(
+                padding: EdgeInsets.only(top: 80.0),
+                child: DollarSignBox(
+                  text: 'Discover new ways to conquer Amazon!',
+                ),
+              ),
               const Padding(
                 padding: EdgeInsets.only(top: 15.0),
                 child: CustomText(
                   text: 'Sell on Amazon Smarter And Easier Than Ever Before',
+                  textSize: TextSize.xxxxl,
+                  textColor: primaryTextColor,
+                  textWeight: WeightSize.ultraBold,
                 ),
               ),
               const Padding(
@@ -52,6 +58,9 @@ class LandingPage extends StatelessWidget {
                 child: CustomText(
                   text:
                       'Fully automated profitable ads for Amazon PPC & Amazon Merch',
+                  textSize: TextSize.xxl,
+                  textColor: primaryTextColor,
+                  textWeight: WeightSize.demiBold,
                 ),
               ),
               Padding(
