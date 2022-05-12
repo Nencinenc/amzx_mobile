@@ -60,8 +60,12 @@ class AccountProvider extends ChangeNotifier {
   final List<Product> _accountProducts = [];
   List<Product> get accountProducts => _accountProducts;
 
-  set addProduct(Product value) {
-    _accountProducts.add(value);
+  set addProducts(List<Product> products) {
+    for (final product in products) {
+      if (!_accountProducts.contains(product)) {
+        _accountProducts.add(product);
+      }
+    }
     notifyListeners();
   }
 
