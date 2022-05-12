@@ -22,16 +22,20 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool showPassword = false;
+  bool hidePassword = true;
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   void handleLogin(BuildContext context) async {
-    await context.read<AccountProvider>().login(
-          _emailController.text,
-          _passwordController.text,
-        );
+    try {
+      await context.read<AccountProvider>().login(
+            _emailController.text,
+            _passwordController.text,
+          );
+    } catch (e) {
+      print('Login failed');
+    }
     final isLogged = await context.read<AccountProvider>().isLogged();
     if (isLogged) {
       Navigator.pushNamedAndRemoveUntil(
@@ -99,14 +103,14 @@ class _LoginPageState extends State<LoginPage> {
                         child: CustomForField(
                           title: 'Password',
                           controller: _passwordController,
-                          password: showPassword,
+                          hideText: hidePassword,
                           icon: EyeIcon(
                             onPressed: () {
                               setState(() {
-                                showPassword = !showPassword;
+                                hidePassword = !hidePassword;
                               });
                             },
-                            hidePassword: !showPassword,
+                            hidePassword: hidePassword,
                           ),
                         ),
                       ),

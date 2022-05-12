@@ -7,7 +7,7 @@ class BoxInputField extends StatelessWidget {
   final String placeholder;
   final Widget? leading;
   final Widget? trailing;
-  final bool password;
+  final bool hideText;
   final TextInputType? textInputType;
   final TextInputAction? textInputAction;
   final Widget? icon;
@@ -27,7 +27,7 @@ class BoxInputField extends StatelessWidget {
     this.textInputType,
     this.textInputAction,
     this.icon,
-    this.password = false,
+    this.hideText = false,
   }) : super(key: key);
 
   @override
@@ -35,7 +35,7 @@ class BoxInputField extends StatelessWidget {
     return TextField(
       controller: controller,
       style: const TextStyle(height: 1, color: buttonText),
-      obscureText: password,
+      obscureText: hideText,
       keyboardType: textInputType,
       textInputAction: textInputAction,
       decoration: InputDecoration(

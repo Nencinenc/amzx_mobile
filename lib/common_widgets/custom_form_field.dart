@@ -7,7 +7,7 @@ import 'input_field.dart';
 class CustomForField extends StatelessWidget {
   final String title;
   final TextEditingController controller;
-  final bool password;
+  final bool hideText;
   final TextInputType? textInputType;
   final TextInputAction? textInputAction;
   final Widget? icon;
@@ -19,7 +19,7 @@ class CustomForField extends StatelessWidget {
     this.textInputType,
     this.textInputAction,
     this.icon,
-    this.password = false,
+    this.hideText = false,
   }) : super(key: key);
 
   @override
@@ -38,7 +38,7 @@ class CustomForField extends StatelessWidget {
         ),
         BoxInputField(
           controller: controller,
-          password: password,
+          hideText: hideText,
           textInputType: textInputType,
           textInputAction: textInputAction,
           icon: icon,

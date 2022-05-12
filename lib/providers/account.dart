@@ -1,3 +1,4 @@
+import 'package:amzx/models/network/product.dart';
 import 'package:amzx/pages/navbar_screens/more_menu/more_menu.dart';
 import 'package:flutter/material.dart';
 
@@ -54,5 +55,18 @@ class AccountProvider extends ChangeNotifier {
       return MoreMenuPage();
     }
     return const HomeScreen();
+  }
+
+  final List<Product> _accountProducts = [];
+  List<Product> get accountProducts => _accountProducts;
+
+  set addProduct(Product value) {
+    _accountProducts.add(value);
+    notifyListeners();
+  }
+
+  set removeProduct(Product value) {
+    _accountProducts.removeWhere((product) => product == value);
+    notifyListeners();
   }
 }

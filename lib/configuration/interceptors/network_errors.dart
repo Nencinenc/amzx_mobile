@@ -10,5 +10,6 @@ class NetworkErrorsInterceptor extends Interceptor {
   void onError(DioError err, ErrorInterceptorHandler handler) {
     final errorMessage = err.response?.data['message'];
     errorMessagesService.displayMessage(errorMessage ?? 'Operation failed');
+    return handler.next(err);
   }
 }
