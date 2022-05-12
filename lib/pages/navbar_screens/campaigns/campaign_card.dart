@@ -1,5 +1,5 @@
 import 'package:amzx/common_widgets/typography/custom_text.dart';
-import 'package:amzx/models/network/campaign.dart';
+import 'package:amzx/models/ui/campaign.dart';
 import 'package:amzx/pages/navbar_screens/campaigns/campaigns_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

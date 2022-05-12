@@ -1,4 +1,4 @@
-import 'package:amzx/models/network/campaign.dart';
+import 'package:amzx/models/ui/campaign.dart';
 import 'package:amzx/pages/navbar_screens/campaigns/campaign_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

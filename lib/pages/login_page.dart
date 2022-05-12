@@ -11,7 +11,6 @@ import '../common_widgets/custom_form_field.dart';
 import '../configuration/constants.dart';
 import '../configuration/interceptors/enums.dart';
 import '../providers/account.dart';
-import '../routes/routes.dart';
 import '../shared/app_colors.dart';
 
 class LoginPage extends StatefulWidget {
@@ -28,22 +27,11 @@ class _LoginPageState extends State<LoginPage> {
   final _passwordController = TextEditingController();
 
   void handleLogin(BuildContext context) async {
-    try {
-      await context.read<AccountProvider>().login(
-            _emailController.text,
-            _passwordController.text,
-          );
-    } catch (e) {
-      print('Login failed');
-    }
-    final isLogged = await context.read<AccountProvider>().isLogged();
-    if (isLogged) {
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        RouteManager.homePage,
-        (route) => false,
-      );
-    }
+    await context.read<AccountProvider>().login(
+          _emailController.text,
+          _passwordController.text,
+          context,
+        );
   }
 
   @override

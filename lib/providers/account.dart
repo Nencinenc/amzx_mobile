@@ -1,4 +1,4 @@
-import 'package:amzx/models/network/product.dart';
+import 'package:amzx/models/ui/product.dart';
 import 'package:amzx/pages/navbar_screens/more_menu/more_menu.dart';
 import 'package:flutter/material.dart';
 
@@ -7,22 +7,37 @@ import '../pages/navbar_screens/campaigns/campaigns_page.dart';
 import '../pages/navbar_screens/home/home.dart';
 import '../pages/navbar_screens/products/products.dart';
 import '../repositories/secure_storage_repo.dart';
+import '../repositories/user.dart';
+import '../routes/routes.dart';
 
 class AccountProvider extends ChangeNotifier {
   final API apiService;
   final SecureStorageRepo storageService;
+  final UserRepository userRepository;
 
   AccountProvider({
     required this.apiService,
     required this.storageService,
+    required this.userRepository,
   });
 
-  Future login(String email, String password) async {
-    final data = await apiService.login(
+  Future login(
+    String email,
+    String password,
+    BuildContext context,
+  ) async {
+    await userRepository.handleAddToken(
       email,
       password,
     );
-    await storageService.addToken(data.token);
+    final isSignedIn = await isLogged();
+    if (isSignedIn) {
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        RouteManager.homePage,
+        (route) => false,
+      );
+    }
   }
 
   Future<bool> isLogged() async {
@@ -30,8 +45,14 @@ class AccountProvider extends ChangeNotifier {
     return token != null;
   }
 
-  Future signOut() async {
+  Future signOut(BuildContext context) async {
     await storageService.deleteAll();
+    _selectedIndex = 0;
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      RouteManager.landingPage,
+      (route) => false,
+    );
   }
 
   int _selectedIndex = 0;

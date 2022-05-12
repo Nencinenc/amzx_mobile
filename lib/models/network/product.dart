@@ -1,15 +1,13 @@
-class Product {
-  final String sku;
-  final String asin;
-  final String image;
-  final String productName;
-  final double productPrice;
+import 'package:json_annotation/json_annotation.dart';
 
-  Product({
-    required this.sku,
-    required this.asin,
-    required this.image,
-    required this.productName,
-    required this.productPrice,
-  });
+part 'product.g.dart';
+
+@JsonSerializable()
+class ProductNetwork {
+  ProductNetwork();
+
+  factory ProductNetwork.fromJson(Map<String, dynamic> json) =>
+      _$ProductNetworkFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ProductNetworkToJson(this);
 }

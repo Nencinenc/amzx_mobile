@@ -3,7 +3,10 @@ import 'dart:io';
 import 'package:amzx/configuration/services/api.dart';
 import 'package:amzx/configuration/services/error_messages.dart';
 import 'package:amzx/providers/account.dart';
+import 'package:amzx/repositories/campaigns.dart';
+import 'package:amzx/repositories/products.dart';
 import 'package:amzx/repositories/secure_storage_repo.dart';
+import 'package:amzx/repositories/user.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -43,6 +46,18 @@ Future _registerRepositories() async {
   getIt.registerLazySingleton<ErrorMessagesService>(
     () => ErrorMessagesService(),
   );
+  getIt.registerLazySingleton<UserRepository>(
+    () => UserRepository(
+      storageService: getIt(),
+      apiService: getIt(),
+    ),
+  );
+  getIt.registerLazySingleton<ProductsRepository>(
+    () => ProductsRepository(),
+  );
+  getIt.registerLazySingleton<CampaignsRepository>(
+    () => CampaignsRepository(),
+  );
 }
 
 Future _registerProviders() async {
@@ -50,6 +65,7 @@ Future _registerProviders() async {
     () => AccountProvider(
       apiService: getIt(),
       storageService: getIt(),
+      userRepository: getIt(),
     ),
   );
 }
