@@ -1,27 +1,46 @@
-import 'package:amzx/shared/app_colors.dart';
+import 'package:amzx/providers/products_page_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../common_widgets/typography/custom_text.dart';
+import '../../../configuration/interceptors/enums.dart';
 
-class ProductsPage extends StatefulWidget {
-
-
+class ProductsPage extends StatelessWidget {
   const ProductsPage({Key? key}) : super(key: key);
 
   @override
-  State<ProductsPage> createState() => _ProductsPageState();
-}
-
-class _ProductsPageState extends State<ProductsPage> {
-  final _scrollController = ScrollController();
-
-  Color appBarColor = shadedHeroColor;
-
-  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        controller: _scrollController,
-        // scrollDirection: Axis.horizontal,
-        child: const Text('test'),
+    if (context.read<ProductsPageProvider>().accountProducts.isEmpty) {
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 28.0),
+          child: CustomText(
+            text:
+                "You currently don't have any registered products. If you want to add go to the 'Add products' page",
+            textColor: Colors.white,
+            textAlign: TextAlign.center,
+            textSize: TextSize.l,
+          ),
+        ),
       );
+    }
+
+    return Consumer(
+        builder: (context, ProductsPageProvider enterHoursProvider, _) {
+      return ListView.builder(
+        itemCount: enterHoursProvider.accountProducts.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12.0,
+              vertical: 4.0,
+            ),
+            child: CustomText(
+              text: enterHoursProvider.accountProducts[index].productName,
+            ),
+          );
+        },
+      );
+    });
   }
 }

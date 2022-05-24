@@ -1,8 +1,6 @@
-import 'package:amzx/providers/account.dart';
 import 'package:amzx/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:provider/provider.dart';
 
 import 'configuration/locator.dart';
 
@@ -17,21 +15,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (context) => getIt<AccountProvider>(),
-          ),
-        ],
-        builder: (context, child) {
-          return GestureDetector(
-            onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-            child: const MaterialApp(
-              debugShowCheckedModeBanner: false,
-              initialRoute: RouteManager.splashPage,
-              onGenerateRoute: RouteManager.generateRoute,
-            ),
-          );
-        });
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: RouteManager.splashPage,
+        onGenerateRoute: RouteManager.generateRoute,
+      ),
+    );
   }
 }

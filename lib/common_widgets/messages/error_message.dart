@@ -13,6 +13,7 @@ Future<void> showErrorMessage(
     borderRadius: BorderRadius.circular(8),
     messageText: CustomText(
       text: title,
+      textColor: Colors.white,
     ),
     backgroundColor: darkGrey,
     icon: const Padding(

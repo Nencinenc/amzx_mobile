@@ -1,5 +1,5 @@
 import 'package:amzx/common_widgets/custom_appbar.dart';
-import 'package:amzx/providers/account.dart';
+import 'package:amzx/providers/main_page_provider.dart';
 import 'package:amzx/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -34,25 +34,28 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(
-        backgroundColor: appBarColor,
-        leading: Builder(
-          builder: (context) => GestureDetector(
-            onTap: () {
-              Scaffold.of(context).openDrawer();
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Image.asset('icons/flags/png/de.png',
-                  package: 'country_icons'),
+    return Consumer<MainPageProvider>(
+        builder: (context, MainPageProvider mainPageProvider, _) {
+      return Scaffold(
+        appBar: CustomAppBar(
+          backgroundColor: appBarColor,
+          leading: Builder(
+            builder: (context) => GestureDetector(
+              onTap: () {
+                Scaffold.of(context).openDrawer();
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Image.asset('icons/flags/png/de.png',
+                    package: 'country_icons'),
+              ),
             ),
           ),
         ),
-      ),
-      body: context.watch<AccountProvider>().getSelectedScreen(),
-      backgroundColor: heroBackground,
-      bottomNavigationBar: const CustomBottomNavBar(),
-    );
+        body: mainPageProvider.getSelectedScreen(),
+        backgroundColor: heroBackground,
+        bottomNavigationBar: const CustomBottomNavBar(),
+      );
+    });
   }
 }

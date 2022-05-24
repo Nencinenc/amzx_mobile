@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../configuration/locator.dart';
 import '../pages/home_page.dart';
 import '../pages/introduction_screens.dart';
 import '../pages/landing_page.dart';
 import '../pages/login_page.dart';
 import '../pages/splash_page.dart';
+import '../providers/main_page_provider.dart';
 
 class RouteManager {
   static const String splashPage = '/home';
@@ -22,7 +25,10 @@ class RouteManager {
         ));
       case homePage:
         return (MaterialPageRoute(
-          builder: (context) => const HomePage(),
+          builder: (context) => ChangeNotifierProvider.value(
+            value: getIt<MainPageProvider>(),
+            child: const HomePage(),
+          ),
           settings: settings,
         ));
       case landingPage:

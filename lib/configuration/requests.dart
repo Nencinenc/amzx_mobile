@@ -27,98 +27,66 @@ Future<Options> unauthenticatedOptions() async {
 }
 
 Future getRequest(String url) async {
-  try {
-    Response response = await _dio.get(url);
-    return response.data;
-  } catch (e) {
-    throw Exception(e);
-  }
+  Response response = await _dio.get(url);
+  return response.data;
 }
 
 Future postRequest(String url, Object body) async {
-  try {
-    Response response = await _dio.post(
-      url,
-      data: body,
-      options: await unauthenticatedOptions(),
-    );
-    return response.data;
-  } catch (e) {
-    throw Exception(e);
-  }
+  Response response = await _dio.post(
+    url,
+    data: body,
+    options: await unauthenticatedOptions(),
+  );
+  return response.data;
 }
 
 Future deleteRequest(String url, Object? body) async {
-  try {
-    Response response = await _dio.delete(
-      url,
-      data: body,
-    );
-    return response.data;
-  } catch (e) {
-    throw Exception(e);
-  }
+  Response response = await _dio.delete(
+    url,
+    data: body,
+  );
+  return response.data;
 }
 
 Future putRequest(String url, Object? body) async {
-  try {
-    Response response = await _dio.put(
-      url,
-      data: body,
-    );
-    return response.data;
-  } catch (e) {
-    throw Exception(e);
-  }
+  Response response = await _dio.put(
+    url,
+    data: body,
+  );
+  return response.data;
 }
 
 Future authenticatedGetRequest(String url) async {
-  try {
-    Response response = await _dio.get(
-      url,
-      options: await authenticationOptions(),
-    );
-    return response.data;
-  } catch (e) {
-    throw Exception(e);
-  }
+  Response response = await _dio.get(
+    url,
+    options: await authenticationOptions(),
+  );
+  return response.data;
 }
 
 Future authenticatedPatchRequest(String url, Object body) async {
-  try {
-    Response response = await _dio.patch(
-      url,
-      options: await authenticationOptions(),
-      data: body,
-    );
-    return response.data;
-  } catch (e) {
-    throw Exception(e);
-  }
+  Response response = await _dio.patch(
+    url,
+    options: await authenticationOptions(),
+    data: body,
+  );
+  return response.data;
 }
 
 Future authenticatedPostRequest(String url, Object body) async {
-  try {
-    Response response = await _dio.post(
-      url,
-      options: await authenticationOptions(),
-      data: body,
-    );
-    return response.data;
-  } catch (e) {
-    throw Exception(e);
-  }
+  Response response = await _dio.post(
+    url,
+    options: await authenticationOptions(),
+    data: body,
+  );
+  return response.data;
 }
 
 Future authenticatedPutRequest(String url, Object body) async {
-  try {
-    Response response = await _dio.put(
-      url,
-      options: await authenticationOptions(),
-      data: json.encode(body),
-    );
-    return response.data;
-  } catch (e) {
-    throw Exception(e);
-  }
+  Response response = await _dio.put(
+    url,
+    options: await authenticationOptions(),
+    data: json.encode(body),
+  );
+  return response.data;
 }

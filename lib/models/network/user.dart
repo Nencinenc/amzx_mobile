@@ -4,11 +4,11 @@ part 'user.g.dart';
 
 @JsonSerializable()
 class UserNetwork {
-  final String id;
-  final String fullName;
-  final String email;
-  final int dateCreated;
-  final int dateUpdated;
+  final String? id;
+  final String? fullName;
+  final String? email;
+  final int? dateCreated;
+  final int? dateUpdated;
 
   UserNetwork({
     required this.id,
@@ -16,9 +16,10 @@ class UserNetwork {
     required this.email,
     required this.dateCreated,
     required this.dateUpdated,
-});
+  });
 
-  factory UserNetwork.fromJson(Map<String, dynamic> json) => _$UserNetworkFromJson(json);
+  factory UserNetwork.fromJson(Map<String, dynamic> json) =>
+      _$UserNetworkFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserNetworkToJson(this);
 }
