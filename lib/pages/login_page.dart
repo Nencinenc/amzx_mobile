@@ -2,15 +2,15 @@ import 'package:amzx/common_widgets/custom_appbar.dart';
 import 'package:amzx/common_widgets/custom_scaffold.dart';
 import 'package:amzx/common_widgets/eye_icon.dart';
 import 'package:amzx/common_widgets/typography/custom_text.dart';
+import 'package:amzx/repositories/user.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../common_widgets/buttons/gradient_button.dart';
 import '../common_widgets/custom_form_field.dart';
 import '../configuration/constants.dart';
 import '../configuration/interceptors/enums.dart';
-import '../providers/account.dart';
+import '../configuration/locator.dart';
 import '../shared/app_colors.dart';
 
 class LoginPage extends StatefulWidget {
@@ -21,17 +21,18 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final UserRepository userRepository = getIt<UserRepository>();
   bool hidePassword = true;
 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
   void handleLogin(BuildContext context) async {
-    await context.read<AccountProvider>().login(
-          _emailController.text,
-          _passwordController.text,
-          context,
-        );
+    await userRepository.login(
+      _emailController.text,
+      _passwordController.text,
+      context,
+    );
   }
 
   @override

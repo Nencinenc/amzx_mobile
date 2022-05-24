@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:amzx/configuration/services/api.dart';
 import 'package:amzx/configuration/services/error_messages.dart';
-import 'package:amzx/providers/account.dart';
+import 'package:amzx/providers/camapings_page_provider.dart';
+import 'package:amzx/providers/main_page_provider.dart';
 import 'package:amzx/repositories/campaigns.dart';
 import 'package:amzx/repositories/products.dart';
 import 'package:amzx/repositories/secure_storage_repo.dart';
@@ -12,6 +13,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 
+import '../providers/products_page_provider.dart';
 import 'interceptors/network_errors.dart';
 
 final getIt = GetIt.instance;
@@ -62,10 +64,12 @@ Future _registerRepositories() async {
 
 Future _registerProviders() async {
   getIt.registerLazySingleton(
-    () => AccountProvider(
-      apiService: getIt(),
-      storageService: getIt(),
-      userRepository: getIt(),
-    ),
+    () => MainPageProvider(),
+  );
+  getIt.registerLazySingleton(
+    () => ProductsPageProvider(),
+  );
+  getIt.registerLazySingleton(
+    () => CampaignsPageProvider(),
   );
 }

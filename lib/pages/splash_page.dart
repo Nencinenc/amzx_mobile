@@ -1,11 +1,11 @@
 import 'package:amzx/common_widgets/custom_scaffold.dart';
-import 'package:amzx/providers/account.dart';
-import 'package:amzx/routes/routes.dart';
+import 'package:amzx/repositories/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../common_widgets/company_logo.dart';
+import '../configuration/locator.dart';
+import '../routes/routes.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -16,7 +16,8 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   void _loadInitialData() async {
-    final isLogged = await context.read<AccountProvider>().isLogged();
+    final userRepository = getIt<UserRepository>();
+    final isLogged = await userRepository.isLogged();
 
     if (isLogged) {
       Navigator.pushNamedAndRemoveUntil(

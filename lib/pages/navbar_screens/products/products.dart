@@ -1,4 +1,4 @@
-import 'package:amzx/providers/account.dart';
+import 'package:amzx/providers/products_page_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,7 +10,7 @@ class ProductsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (context.read<AccountProvider>().accountProducts.isEmpty) {
+    if (context.read<ProductsPageProvider>().accountProducts.isEmpty) {
       return const Center(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 28.0),
@@ -25,22 +25,22 @@ class ProductsPage extends StatelessWidget {
       );
     }
 
-    return ListView.builder(
-      itemCount: context.read<AccountProvider>().accountProducts.length,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12.0,
-            vertical: 4.0,
-          ),
-          child: CustomText(
-            text: context
-                .read<AccountProvider>()
-                .accountProducts[index]
-                .productName,
-          ),
-        );
-      },
-    );
+    return Consumer(
+        builder: (context, ProductsPageProvider enterHoursProvider, _) {
+      return ListView.builder(
+        itemCount: enterHoursProvider.accountProducts.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12.0,
+              vertical: 4.0,
+            ),
+            child: CustomText(
+              text: enterHoursProvider.accountProducts[index].productName,
+            ),
+          );
+        },
+      );
+    });
   }
 }

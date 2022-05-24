@@ -1,17 +1,19 @@
 import 'package:amzx/common_widgets/typography/custom_text.dart';
 import 'package:amzx/pages/navbar_screens/more_menu/menu_list_item.dart';
+import 'package:amzx/repositories/user.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 
 import '../../../configuration/interceptors/enums.dart';
-import '../../../providers/account.dart';
+import '../../../configuration/locator.dart';
 import '../../../shared/app_colors.dart';
 
 part 'menu_item_model.dart';
 
 class MoreMenuPage extends StatelessWidget {
   MoreMenuPage({Key? key}) : super(key: key);
+
+  final userRepository = getIt<UserRepository>();
 
   final items = [
     MenuItemModel(
@@ -25,7 +27,7 @@ class MoreMenuPage extends StatelessWidget {
   ];
 
   void handleLogout(BuildContext context) async {
-    await context.read<AccountProvider>().signOut(context);
+    await userRepository.signOut(context);
   }
 
   @override
