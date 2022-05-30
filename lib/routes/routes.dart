@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../configuration/locator.dart';
+import '../pages/amazon_page.dart';
 import '../pages/home_page.dart';
 import '../pages/introduction_screens.dart';
 import '../pages/landing_page.dart';
@@ -15,6 +16,7 @@ class RouteManager {
   static const String landingPage = '/login';
   static const String introductionPage = '/introduction-page';
   static const String loginPage = '/login-page';
+  static const String amazonPage = '/amazon-page';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -43,7 +45,12 @@ class RouteManager {
         ));
       case loginPage:
         return (MaterialPageRoute(
-          builder: (context) => LoginPage(),
+          builder: (context) => const LoginPage(),
+          settings: settings,
+        ));
+      case amazonPage:
+        return (MaterialPageRoute(
+          builder: (context) => const AmazonPage(),
           settings: settings,
         ));
       default:
