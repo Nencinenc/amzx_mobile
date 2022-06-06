@@ -12,8 +12,19 @@ import '../configuration/interceptors/enums.dart';
 import '../routes/routes.dart';
 import '../shared/app_colors.dart';
 
-class AmazonSettings extends StatelessWidget {
+class AmazonSettings extends StatefulWidget {
   const AmazonSettings({Key? key}) : super(key: key);
+
+  @override
+  State<AmazonSettings> createState() => _AmazonSettingsState();
+}
+
+class _AmazonSettingsState extends State<AmazonSettings> {
+  @override
+  initState() {
+    context.read<AmazonSettingsProvider>().getInitialData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

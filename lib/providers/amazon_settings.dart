@@ -27,4 +27,8 @@ class AmazonSettingsProvider extends ChangeNotifier {
     _isRegionConnected = value;
     notifyListeners();
   }
+
+  void getInitialData() async {
+    _isRegionConnected = await amazonSettingsRepository.isRegionConnected(0);
+  }
 }
