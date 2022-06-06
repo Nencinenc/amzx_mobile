@@ -1,3 +1,4 @@
+import 'package:amzx/pages/amazon_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +18,7 @@ class RouteManager {
   static const String introductionPage = '/introduction-page';
   static const String loginPage = '/login-page';
   static const String amazonPage = '/amazon-page';
+  static const String amazonSettings = '/amazon-settings';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -51,6 +53,11 @@ class RouteManager {
       case amazonPage:
         return (MaterialPageRoute(
           builder: (context) => const AmazonPage(),
+          settings: settings,
+        ));
+      case amazonSettings:
+        return (MaterialPageRoute(
+          builder: (context) => const AmazonSettings(),
           settings: settings,
         ));
       default:

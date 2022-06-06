@@ -17,13 +17,13 @@ class MoreMenuPage extends StatelessWidget {
 
   final items = [
     MenuItemModel(
-        icon: FontAwesomeIcons.addressBook, text: 'Kur', onTap: () {}),
+        icon: FontAwesomeIcons.addressBook, text: 'Test', onTap: () {}),
     MenuItemModel(
-        icon: FontAwesomeIcons.addressBook, text: 'Kur', onTap: () {}),
+        icon: FontAwesomeIcons.addressBook, text: 'Test', onTap: () {}),
     MenuItemModel(
-        icon: FontAwesomeIcons.addressBook, text: 'Kur', onTap: () {}),
+        icon: FontAwesomeIcons.addressBook, text: 'Test', onTap: () {}),
     MenuItemModel(
-        icon: FontAwesomeIcons.addressBook, text: 'Kur', onTap: () {}),
+        icon: FontAwesomeIcons.addressBook, text: 'Test', onTap: () {}),
   ];
 
   void handleLogout(BuildContext context) async {
@@ -69,7 +69,7 @@ class MoreMenuPage extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(bottom: 18.0),
                     child: CustomText(
-                      text: 'Adko Djudjeta',
+                      text: 'Petar Iliev',
                       textSize: TextSize.xxl,
                       textWeight: WeightSize.bold,
                       textColor: Colors.white,

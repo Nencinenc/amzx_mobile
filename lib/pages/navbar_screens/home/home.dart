@@ -1,8 +1,5 @@
-import 'package:amzx/common_widgets/custom_card.dart';
-import 'package:amzx/common_widgets/typography/custom_text.dart';
-import 'package:amzx/configuration/interceptors/enums.dart';
+import 'package:amzx/common_widgets/%20common/custom_card.dart';
 import 'package:amzx/models/ui/card.dart';
-import 'package:amzx/routes/routes.dart';
 import 'package:amzx/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -93,18 +90,6 @@ class HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 18.0),
-            child: GestureDetector(
-              onTap: () =>
-                  Navigator.pushNamed(context, RouteManager.amazonPage),
-              child: const CustomText(
-                text: "Login with Amazon",
-                textSize: TextSize.l,
-                textColor: primaryTextColor,
-              ),
-            ),
-          )
         ],
       ),
     );

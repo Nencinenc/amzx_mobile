@@ -1,10 +1,10 @@
-import 'package:amzx/common_widgets/custom_appbar.dart';
+import 'package:amzx/common_widgets/%20common/custom_appbar.dart';
 import 'package:amzx/providers/main_page_provider.dart';
 import 'package:amzx/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../common_widgets/custom_bottom_navbar.dart';
+import '../common_widgets/ common/custom_bottom_navbar.dart';
 import '../configuration/constants.dart';
 
 class HomePage extends StatefulWidget {

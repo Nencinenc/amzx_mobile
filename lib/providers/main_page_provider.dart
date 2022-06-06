@@ -1,3 +1,4 @@
+import 'package:amzx/configuration/services/amazon_values.dart';
 import 'package:amzx/pages/navbar_screens/more_menu/more_menu.dart';
 import 'package:amzx/providers/products_page_provider.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,12 @@ import '../pages/navbar_screens/products/products.dart';
 import 'camapings_page_provider.dart';
 
 class MainPageProvider extends ChangeNotifier {
+  final AmazonValues amazonValues;
+
+  MainPageProvider({
+    required this.amazonValues,
+  });
+
   int _selectedIndex = 0;
   int get selectedIndex => _selectedIndex;
   set handleIndexChange(int value) {
@@ -38,4 +45,6 @@ class MainPageProvider extends ChangeNotifier {
     }
     return const HomeScreen();
   }
+
+  void getInitialData() async {}
 }

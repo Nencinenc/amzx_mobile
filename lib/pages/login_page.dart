@@ -1,13 +1,13 @@
-import 'package:amzx/common_widgets/custom_appbar.dart';
-import 'package:amzx/common_widgets/custom_scaffold.dart';
-import 'package:amzx/common_widgets/eye_icon.dart';
+import 'package:amzx/common_widgets/%20common/custom_appbar.dart';
+import 'package:amzx/common_widgets/%20common/custom_scaffold.dart';
+import 'package:amzx/common_widgets/%20common/eye_icon.dart';
 import 'package:amzx/common_widgets/typography/custom_text.dart';
 import 'package:amzx/repositories/user.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../common_widgets/ common/custom_form_field.dart';
 import '../common_widgets/buttons/gradient_button.dart';
-import '../common_widgets/custom_form_field.dart';
 import '../configuration/constants.dart';
 import '../configuration/interceptors/enums.dart';
 import '../configuration/locator.dart';

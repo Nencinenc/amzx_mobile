@@ -1,11 +1,11 @@
-import 'package:amzx/common_widgets/company_logo_text.dart';
-import 'package:amzx/common_widgets/custom_scaffold.dart';
+import 'package:amzx/common_widgets/%20common/company_logo_text.dart';
+import 'package:amzx/common_widgets/%20common/custom_scaffold.dart';
 import 'package:amzx/routes/routes.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../common_widgets/ common/dollar_sign_box.dart';
 import '../common_widgets/buttons/filled_button.dart';
 import '../common_widgets/buttons/outline_button.dart';
-import '../common_widgets/dollar_sign_box.dart';
 import '../common_widgets/typography/custom_text.dart';
 import '../configuration/interceptors/enums.dart';
 import '../shared/app_colors.dart';

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:amzx/configuration/services/amazon_values.dart';
 import 'package:amzx/configuration/services/api.dart';
 import 'package:amzx/configuration/services/error_messages.dart';
 import 'package:amzx/providers/camapings_page_provider.dart';
@@ -10,6 +11,7 @@ import 'package:amzx/repositories/secure_storage_repo.dart';
 import 'package:amzx/repositories/user.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 
@@ -60,11 +62,18 @@ Future _registerRepositories() async {
   getIt.registerLazySingleton<CampaignsRepository>(
     () => CampaignsRepository(),
   );
+  getIt.registerLazySingleton<AmazonValues>(
+    () => AmazonValues(
+      amazonCode: ValueNotifier(''),
+    ),
+  );
 }
 
 Future _registerProviders() async {
   getIt.registerLazySingleton(
-    () => MainPageProvider(),
+    () => MainPageProvider(
+      amazonValues: getIt(),
+    ),
   );
   getIt.registerLazySingleton(
     () => ProductsPageProvider(),

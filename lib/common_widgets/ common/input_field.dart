@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../shared/app_colors.dart';
+import '../../shared/app_colors.dart';
 
 class BoxInputField extends StatelessWidget {
   final TextEditingController controller;

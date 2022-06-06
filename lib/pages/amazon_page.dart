@@ -1,10 +1,12 @@
 import 'dart:io';
 
-import 'package:amzx/common_widgets/custom_appbar.dart';
+import 'package:amzx/common_widgets/%20common/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 import '../configuration/constants.dart';
+import '../configuration/locator.dart';
+import '../configuration/services/amazon_values.dart';
 
 class AmazonPage extends StatefulWidget {
   const AmazonPage({Key? key}) : super(key: key);
@@ -15,6 +17,7 @@ class AmazonPage extends StatefulWidget {
 
 class AmazonPageState extends State<AmazonPage> {
   final GlobalKey webViewKey = GlobalKey();
+  final amazonValues = getIt<AmazonValues>();
 
   InAppWebViewController? webViewController;
   InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
@@ -31,9 +34,7 @@ class AmazonPageState extends State<AmazonPage> {
   );
 
   late PullToRefreshController pullToRefreshController;
-  String url = "";
   double progress = 0;
-  final urlController = TextEditingController();
 
   @override
   void initState() {
@@ -54,6 +55,24 @@ class AmazonPageState extends State<AmazonPage> {
     );
   }
 
+  void onHistoryChange(
+      InAppWebViewController controller, Uri? url, bool? androidIsReload) {
+    final currentUrl = url.toString();
+    const start = "code=";
+    const end = "&scope";
+    final startIndex = currentUrl.indexOf(start);
+    if (startIndex != -1) {
+      final endIndex = currentUrl.indexOf(end, startIndex + start.length);
+      final code = currentUrl.substring(
+        startIndex + start.length,
+        endIndex,
+      );
+      amazonValues.handleAmazonCodeChange(code);
+      // Navigator.pushNamedAndRemoveUntil(
+      //     context, RouteManager.homePage, (route) => false);
+    }
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -62,6 +81,11 @@ class AmazonPageState extends State<AmazonPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(
+        leading: BackButton(
+          color: Colors.white,
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -78,12 +102,6 @@ class AmazonPageState extends State<AmazonPage> {
                     onWebViewCreated: (controller) {
                       webViewController = controller;
                     },
-                    onLoadStart: (controller, url) {
-                      setState(() {
-                        this.url = url.toString();
-                        urlController.text = this.url;
-                      });
-                    },
                     androidOnPermissionRequest:
                         (controller, origin, resources) async {
                       return PermissionRequestResponse(
@@ -96,10 +114,6 @@ class AmazonPageState extends State<AmazonPage> {
                     },
                     onLoadStop: (controller, url) async {
                       pullToRefreshController.endRefreshing();
-                      setState(() {
-                        this.url = url.toString();
-                        urlController.text = this.url;
-                      });
                     },
                     onLoadError: (controller, url, code, message) {
                       pullToRefreshController.endRefreshing();
@@ -110,18 +124,9 @@ class AmazonPageState extends State<AmazonPage> {
                       }
                       setState(() {
                         this.progress = progress / 100;
-                        urlController.text = this.url;
                       });
                     },
-                    onUpdateVisitedHistory: (controller, url, androidIsReload) {
-                      setState(() {
-                        this.url = url.toString();
-                        urlController.text = this.url;
-                      });
-                    },
-                    onConsoleMessage: (controller, consoleMessage) {
-                      print(consoleMessage);
-                    },
+                    onUpdateVisitedHistory: onHistoryChange,
                   ),
                   progress < 1.0
                       ? LinearProgressIndicator(value: progress)

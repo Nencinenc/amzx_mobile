@@ -1,8 +1,8 @@
 import 'package:amzx/shared/app_colors.dart';
 import 'package:flutter/material.dart';
 
-import '../configuration/locator.dart';
-import '../configuration/services/error_messages.dart';
+import '../../configuration/locator.dart';
+import '../../configuration/services/error_messages.dart';
 
 class CustomScaffold extends StatefulWidget {
   final Widget body;

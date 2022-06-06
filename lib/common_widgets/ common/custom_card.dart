@@ -3,7 +3,7 @@ import 'package:amzx/shared/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../configuration/interceptors/enums.dart';
+import '../../configuration/interceptors/enums.dart';
 
 class CustomCard extends StatelessWidget {
   final String title;

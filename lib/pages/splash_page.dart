@@ -1,9 +1,9 @@
-import 'package:amzx/common_widgets/custom_scaffold.dart';
+import 'package:amzx/common_widgets/%20common/custom_scaffold.dart';
 import 'package:amzx/repositories/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../common_widgets/company_logo.dart';
+import '../common_widgets/ common/company_logo.dart';
 import '../configuration/locator.dart';
 import '../routes/routes.dart';
 
@@ -21,7 +21,9 @@ class _SplashPageState extends State<SplashPage> {
 
     if (isLogged) {
       Navigator.pushNamedAndRemoveUntil(
-          context, RouteManager.homePage, (_) => false);
+          context, RouteManager.amazonSettings, (_) => false);
+      // Navigator.pushNamedAndRemoveUntil(
+      //     context, RouteManager.homePage, (_) => false);
     }
     if (!isLogged) {
       Navigator.pushNamedAndRemoveUntil(

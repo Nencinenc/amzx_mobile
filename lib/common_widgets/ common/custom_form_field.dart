@@ -1,7 +1,7 @@
 import 'package:amzx/common_widgets/typography/custom_text.dart';
 import 'package:flutter/material.dart';
 
-import '../shared/app_colors.dart';
+import '../../shared/app_colors.dart';
 import 'input_field.dart';
 
 class CustomForField extends StatelessWidget {

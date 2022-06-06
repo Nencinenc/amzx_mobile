@@ -21,3 +21,7 @@ const Color dollarSignBox = Color(0xff3A2F85);
 const Color filledButtonBackground = Color(0xff7450FE);
 const Color outlineButtonBorder = Color(0xff7450FE);
 const Color buttonText = Color(0xffB8B5D5);
+
+//common
+const success = Color(0xFF4BB543);
+const error = Color(0xFFD32F2F);
