@@ -1,6 +1,8 @@
 import 'package:amzx/common_widgets/%20common/custom_appbar.dart';
 import 'package:amzx/common_widgets/%20common/custom_scaffold.dart';
+import 'package:amzx/providers/amazon_settings.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 import '../common_widgets/ common/connection_indicator.dart';
@@ -15,60 +17,68 @@ class AmazonSettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScaffold(
-      appBar: const CustomAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 18.0),
-                child: CustomText(
-                  text: 'Amazon configuration',
-                  textColor: Colors.white,
-                  textSize: TextSize.xxl,
-                  textWeight: WeightSize.bold,
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 18.0),
-                child: ConnectionIndicator(
-                  isOnline: true,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
-                child: ToggleSwitch(
-                  minWidth: deviceWidth(context),
-                  minHeight: 50.0,
-                  fontSize: 12.0,
-                  initialLabelIndex: 1,
-                  activeBgColor: const [primaryBackground],
-                  activeFgColor: Colors.white,
-                  inactiveBgColor: Colors.white,
-                  inactiveFgColor: Colors.grey[900],
-                  totalSwitches: 3,
-                  labels: const [europeAndIndia, northAmerica, farEast],
-                ),
-              ),
-              Center(
-                child: GestureDetector(
-                  onTap: () =>
-                      Navigator.pushNamed(context, RouteManager.amazonPage),
-                  child: Image.asset(
-                    lwaWithAmazonPath,
-                    fit: BoxFit.cover,
-                    height: 40,
+    return Consumer<AmazonSettingsProvider>(builder: (
+      BuildContext context,
+      AmazonSettingsProvider amazonSettingsProvider,
+      _,
+    ) {
+      return CustomScaffold(
+        appBar: const CustomAppBar(),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 18.0),
+                  child: CustomText(
+                    text: 'Amazon configuration',
+                    textColor: Colors.white,
+                    textSize: TextSize.xxl,
+                    textWeight: WeightSize.bold,
                   ),
                 ),
-              ),
-            ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 18.0),
+                  child: ConnectionIndicator(
+                    isOnline: amazonSettingsProvider.isRegionConnected,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20.0),
+                  child: ToggleSwitch(
+                    minWidth: deviceWidth(context),
+                    minHeight: 50.0,
+                    fontSize: 12.0,
+                    initialLabelIndex: amazonSettingsProvider.activeIndex,
+                    activeBgColor: const [primaryBackground],
+                    activeFgColor: Colors.white,
+                    inactiveBgColor: Colors.white,
+                    inactiveFgColor: Colors.grey[900],
+                    totalSwitches: 3,
+                    labels: const [europeAndIndia, northAmerica, farEast],
+                    onToggle: (index) =>
+                        amazonSettingsProvider.changeActiveIndex(index),
+                  ),
+                ),
+                Center(
+                  child: GestureDetector(
+                    onTap: () =>
+                        Navigator.pushNamed(context, RouteManager.amazonPage),
+                    child: Image.asset(
+                      lwaWithAmazonPath,
+                      fit: BoxFit.cover,
+                      height: 40,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

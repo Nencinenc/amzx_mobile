@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:amzx/common_widgets/%20common/custom_appbar.dart';
+import 'package:amzx/repositories/amazon_settings/amazon_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 import '../configuration/constants.dart';
 import '../configuration/locator.dart';
 import '../configuration/services/amazon_values.dart';
+import '../routes/routes.dart';
 
 class AmazonPage extends StatefulWidget {
   const AmazonPage({Key? key}) : super(key: key);
@@ -18,6 +20,7 @@ class AmazonPage extends StatefulWidget {
 class AmazonPageState extends State<AmazonPage> {
   final GlobalKey webViewKey = GlobalKey();
   final amazonValues = getIt<AmazonValues>();
+  final amazonSettingsRepository = getIt<AmazonSettingsRepository>();
 
   InAppWebViewController? webViewController;
   InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
@@ -55,8 +58,8 @@ class AmazonPageState extends State<AmazonPage> {
     );
   }
 
-  void onHistoryChange(
-      InAppWebViewController controller, Uri? url, bool? androidIsReload) {
+  void onHistoryChange(InAppWebViewController controller, Uri? url,
+      bool? androidIsReload) async {
     final currentUrl = url.toString();
     const start = "code=";
     const end = "&scope";
@@ -68,8 +71,9 @@ class AmazonPageState extends State<AmazonPage> {
         endIndex,
       );
       amazonValues.handleAmazonCodeChange(code);
-      // Navigator.pushNamedAndRemoveUntil(
-      //     context, RouteManager.homePage, (route) => false);
+      await amazonSettingsRepository.connectAccount();
+      Navigator.pushNamedAndRemoveUntil(
+          context, RouteManager.homePage, (route) => false);
     }
   }
 

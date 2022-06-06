@@ -1,4 +1,5 @@
 import 'package:amzx/common_widgets/%20common/custom_scaffold.dart';
+import 'package:amzx/repositories/amazon_settings/amazon_settings.dart';
 import 'package:amzx/repositories/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,13 +18,19 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   void _loadInitialData() async {
     final userRepository = getIt<UserRepository>();
+    final amazonRepository = getIt<AmazonSettingsRepository>();
+
+    final isAccountConnected = await amazonRepository.isAccountConnected();
     final isLogged = await userRepository.isLogged();
 
     if (isLogged) {
-      Navigator.pushNamedAndRemoveUntil(
-          context, RouteManager.amazonSettings, (_) => false);
-      // Navigator.pushNamedAndRemoveUntil(
-      //     context, RouteManager.homePage, (_) => false);
+      if (!isAccountConnected) {
+        Navigator.pushNamedAndRemoveUntil(
+            context, RouteManager.amazonSettings, (_) => false);
+      } else {
+        Navigator.pushNamedAndRemoveUntil(
+            context, RouteManager.homePage, (_) => false);
+      }
     }
     if (!isLogged) {
       Navigator.pushNamedAndRemoveUntil(

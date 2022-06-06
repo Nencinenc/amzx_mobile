@@ -1,4 +1,5 @@
 import 'package:amzx/pages/amazon_settings.dart';
+import 'package:amzx/providers/amazon_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -57,7 +58,9 @@ class RouteManager {
         ));
       case amazonSettings:
         return (MaterialPageRoute(
-          builder: (context) => const AmazonSettings(),
+          builder: (context) => ChangeNotifierProvider.value(
+              value: getIt<AmazonSettingsProvider>(),
+              child: const AmazonSettings()),
           settings: settings,
         ));
       default:
